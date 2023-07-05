@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/second_activity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right with Class"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/third_activity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fourth_activity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right with RecyclerView Horizontal"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fifth_activity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right with RecyclerView Vertical"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/left_right_with_library_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right with Library"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/right_recycler_view_with_library_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Left to Right RecyclerView with Library"/>
+
+</LinearLayout>
