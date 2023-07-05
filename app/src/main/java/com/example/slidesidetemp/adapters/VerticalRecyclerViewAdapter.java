@@ -1,6 +1,10 @@
 package com.example.slidesidetemp.adapters;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,10 +22,18 @@ import com.example.slidesidetemp.R;
  */
 public class VerticalRecyclerViewAdapter extends  RecyclerView.Adapter<VerticalRecyclerViewAdapter.ViewHolder> {
 
+    private static final String TAG = "Test_code";
+
+    private Context context;
     private CallbackInterface callback;
 
-    public VerticalRecyclerViewAdapter(CallbackInterface callback) {
+    private GestureDetector gestureDetector;
+
+    public VerticalRecyclerViewAdapter(Context context, CallbackInterface callback) {
+        this.context = context;
         this.callback = callback;
+
+        init(context);
     }
 
     @NonNull
@@ -29,7 +41,7 @@ public class VerticalRecyclerViewAdapter extends  RecyclerView.Adapter<VerticalR
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_vertical_item, parent, false);
 
-        view.setOnTouchListener(new OnSwipeTouchListener(parent.getContext(), callback)); // connect touch listener
+//        view.setOnTouchListener(new OnSwipeTouchListener(parent.getContext(), callback)); // connect touch listener
 
         return new ViewHolder(view);
     }
@@ -44,7 +56,33 @@ public class VerticalRecyclerViewAdapter extends  RecyclerView.Adapter<VerticalR
         return 20;
     }
 
+    private void init(Context context) {
+        gestureDetector = new GestureDetector(context, new GestureListener());
+    }
 
+    private final class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        private static final int SWIPE_THRESHOLD = 100;
+        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
+        @Override
+        public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+
+            float diffX = e2.getX() - e1.getX();
+            float diffY = e2.getY() - e1.getY();
+
+            if (Math.abs(diffX) > Math.abs(diffY) &&
+                    Math.abs(diffX) > SWIPE_THRESHOLD &&
+                    Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                if (diffX > 0) {
+                    // Выполняйте действия при смахивании вправо
+                    Log.d(TAG, "onFling: onBackPress");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 
 
 

@@ -28,7 +28,7 @@ public class LeftRightRecyclerViewVerticalActivity extends AppCompatActivity {
         setReferences();
         setGestureDetector();
 
-        adapter = new VerticalRecyclerViewAdapter(new CallbackInterface() {
+        adapter = new VerticalRecyclerViewAdapter(getBaseContext(), new CallbackInterface() {
             @Override
             public void onBack() {
                 onBackPressed();
